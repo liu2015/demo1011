@@ -70,7 +70,4 @@ public class TUser {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    public void getUserName(String username) {
-    }
 }

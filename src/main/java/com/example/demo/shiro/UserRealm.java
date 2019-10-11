@@ -1,7 +1,8 @@
 package com.example.demo.shiro;
 
 import com.example.demo.UserService.Userservice;
-import com.example.demo.entity.TUser;
+import com.example.demo.UserService.impl.SysUserServiceimpl;
+import com.example.demo.entity.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -23,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    Userservice userservice;
+    SysUserServiceimpl userservice;
 
 
     @Override
@@ -40,10 +41,10 @@ public class UserRealm extends AuthorizingRealm {
  */
         System.out.println( "授权" );
         Subject subject=SecurityUtils.getSubject();
-        TUser user=(TUser) subject.getPrincipal();
+        SysUser user=(SysUser) subject.getPrincipal();
 
         SimpleAuthorizationInfo simpleAuthorizationInfo=new SimpleAuthorizationInfo(  );
-        simpleAuthorizationInfo.addStringPermission( user.getUserName() );
+        simpleAuthorizationInfo.addStringPermission( user.getLoginName() );
         return simpleAuthorizationInfo;
 
 
@@ -55,15 +56,17 @@ public class UserRealm extends AuthorizingRealm {
         System.out.println( "认证" );
 
         UsernamePasswordToken user=(UsernamePasswordToken) authenticationToken;
-        TUser sysUser=new TUser();
-        sysUser.getUserName( user.getUsername() );
+        SysUser sysUser=new SysUser();
+//        sysUser.getUserName( user.getUsername() );
+//        sysUser.setPassword( String.copyValueOf( user.getPassword() ) );
+        sysUser.setLoginName( user.getUsername() );
         sysUser.setPassword( String.copyValueOf( user.getPassword() ) );
 
 //        System.out.println( "显示认证的内容··········"+sysUser.getLoginName()+sysUser.getPassword() );
 
-        TUser newUser=userservice.selectOne( sysUser );
+        SysUser newUser=userservice.selectOne( sysUser );
 
-        System.out.println( "显示认证的内容··········"+newUser.getUserName()+newUser.getPassword() );
+        System.out.println( "显示认证的内容··········"+newUser.getLoginName()+newUser.getPassword() );
         System.out.println( "这个是看看认证时候存储的是什么"+newUser.toString() );
         if (newUser==null)
         {
