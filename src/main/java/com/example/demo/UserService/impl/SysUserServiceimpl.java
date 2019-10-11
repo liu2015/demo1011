@@ -1,8 +1,7 @@
 package com.example.demo.UserService.impl;
 
-import com.example.demo.UserService.Userservice;
-import com.example.demo.entity.TUser;
-import com.example.demo.mapper.TUserMapper;
+import com.example.demo.entity.SysUser;
+import com.example.demo.mapper.SysUserMapper;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,20 +10,19 @@ import tk.mybatis.mapper.provider.base.BaseSelectProvider;
 /**
  * @ProjectName: demo1011
  * @Package: com.example.demo.UserService.impl
- * @ClassName: UserServiceimpl
+ * @ClassName: SysUserService
  * @Author: ZHY
  * @Description: ${description}
- * @Date: 2019/10/11 14:59
+ * @Date: 2019/10/11 16:41
  * @Version: 1.0
  */
 @Service
-public class UserServiceimpl implements Userservice {
-
+public class SysUserServiceimpl {
     @Autowired
-    TUserMapper tUserMapper;
+    SysUserMapper sysUserMapper;
 
     @SelectProvider(type=BaseSelectProvider.class, method="dynamicSQL")
-    public TUser selectOne(TUser tUser) {
-        return tUserMapper.selectOne( tUser );
+    public SysUser selectOne(SysUser user) {
+        return sysUserMapper.selectOne( user );
     }
 }
