@@ -27,11 +27,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager( defaultWebSecurityManager );
 
         Map<String ,String > fMap=new HashMap<String ,String >(  );
-        fMap.put( "/list", "authc" );
-        fMap.put( "/add", "authc" );
-
-        fMap.put( "/list","perms[2222]" );
-        fMap.put( "/add","perms[2222]" );
+        fMap.put( "/","authc" );
 
         shiroFilterFactoryBean.setLoginUrl( "/login" );
 

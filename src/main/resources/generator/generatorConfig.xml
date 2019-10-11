@@ -16,7 +16,7 @@
 
         <!-- 配置 tk.mybatis 插件(通用父级接口) -->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="tk.mybatis.MyMapper"/>
+            <property name="mappers" value="mybatis.MyMapper"/>
         </plugin>
 
         <!-- 配置数据库连接 -->
