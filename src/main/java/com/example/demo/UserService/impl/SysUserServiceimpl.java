@@ -15,6 +15,7 @@ import tk.mybatis.mapper.provider.base.BaseSelectProvider;
  * @Description: ${description}
  * @Date: 2019/10/11 16:41
  * @Version: 1.0
+ * 这里是登录功能实现
  */
 @Service
 public class SysUserServiceimpl {
