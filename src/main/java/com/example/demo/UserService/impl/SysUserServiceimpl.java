@@ -26,4 +26,8 @@ public class SysUserServiceimpl {
     public SysUser selectOne(SysUser user) {
         return sysUserMapper.selectOne( user );
     }
+
+    public SysUser findUser(SysUser user) {
+        return sysUserMapper.findUser( user );
+    }
 }

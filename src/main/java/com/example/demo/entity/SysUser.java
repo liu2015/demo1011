@@ -106,4 +106,16 @@ public class SysUser {
         this.remark = remark;
     }
 
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "userId=" + userId +
+                ", loginName='" + loginName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", deptId=" + deptId +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
+

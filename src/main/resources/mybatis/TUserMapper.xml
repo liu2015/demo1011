@@ -10,4 +10,14 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
   </resultMap>
+  <insert id="insert1">
+    <selectKey keyProperty="userId" resultType="string" order="BEFORE">
+      select uuid()
+    </selectKey>
+    insert into t_user (password,phone,user_name,user_id) values (#{password},#{phone},#{userName},#{userId})
+
+  </insert>
+  <select id="seach" resultType="com.example.demo.entity.TUser" resultMap="BaseResultMap">
+      select * from t_user where user_name=#{userName} or phone=#{phone}
+    </select>
 </mapper>

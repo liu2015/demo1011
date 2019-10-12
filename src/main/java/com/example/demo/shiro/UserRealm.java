@@ -51,11 +51,11 @@ public class UserRealm extends AuthorizingRealm {
     }
 
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg1) throws AuthenticationException {
 
         System.out.println( "认证" );
 
-        UsernamePasswordToken user=(UsernamePasswordToken) authenticationToken;
+        UsernamePasswordToken user=(UsernamePasswordToken) arg1;
         SysUser sysUser=new SysUser();
 //        sysUser.getUserName( user.getUsername() );
 //        sysUser.setPassword( String.copyValueOf( user.getPassword() ) );
@@ -65,9 +65,20 @@ public class UserRealm extends AuthorizingRealm {
 //        System.out.println( "显示认证的内容··········"+sysUser.getLoginName()+sysUser.getPassword() );
 
         SysUser newUser=userservice.selectOne( sysUser );
-
-        System.out.println( "显示认证的内容··········"+newUser.getLoginName()+newUser.getPassword() );
-        System.out.println( "这个是看看认证时候存储的是什么"+newUser.toString() );
+/**
+ * @Method doGetAuthenticationInfo
+ * @Author ZHY
+ * @Version  1.0
+ * @Description
+ * @param arg1
+ * @Return org.apache.shiro.authc.AuthenticationInfo
+ * @Exception  这里若是显示了System.out.println 会有报错信息,因为执行到这里会有空指针错误
+ *
+ * @Date 2019/10/12 15:17
+ */
+//        System.out.println( "显示认证的内容··········"+newUser.getLoginName()+newUser.getPassword() );
+//        System.out.println( "这个是看看认证时候存储的是什么"+newUser.toString() );
+//
         if (newUser==null)
         {
             return null;

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <script src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<h2 > 登录成功</h2>
+<br>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Student</div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>password</th>
+            <th>phone</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user:${all}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.phone}"></td>
+            <td><a th:href="${'/edit/'+user.userId}">edit</a> </td>
+            <td><a th:href="${'/del/'+user.userId}">delete</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a class="btn btn-info" href="/toAdd" role="button">add</a>
+&nbsp;&nbsp;&nbsp;
+<a class="btn btn-info" href="/seach" role="button">seach</a>
+
+
+
+</body>
+</html>
