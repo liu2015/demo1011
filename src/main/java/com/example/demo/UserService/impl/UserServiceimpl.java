@@ -68,7 +68,7 @@ public class UserServiceimpl implements Userservice {
  * @Return int
  * @Exception
  * @Date 2019/10/12 16:58
- * 这里是插入一条数据,是用了uuid   返回类型是int类型 0和1
+ * 这里是插入一条数据,是用了uuid   返回类型是int类型 0和1 条
  */
         return tUserMapper.insert1( user );
     }
